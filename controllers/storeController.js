@@ -14,7 +14,7 @@ const multerOptions = {
             next({message: 'That filetype isn\'t allowed!'}, false);
         }
     }
-}
+} 
 
 exports.homePage = (req, res) => {
     console.log(req.name);
@@ -52,6 +52,12 @@ exports.getStores = async (req, res) => {
     // 1. Query database for a list of all stores
     const stores = await Store.find(); // Returns a promise
     res.render('stores', {title: 'Stores', stores});
+}
+
+exports.getStoreBySlug = async (req, res) => {
+    const store = await Store.findOne({slug: req.params.slug});
+    if (!store) return next();
+    res.render('store', {store, title: store.name});
 }
 
 exports.editStore = async (req, res) => {
