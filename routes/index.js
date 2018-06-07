@@ -9,8 +9,8 @@ router.get("/stores", catchErrors(storeController.getStores));
 router.get('/store/:slug', catchErrors(storeController.getStoreBySlug));
 router.get("/", storeController.homePage);
 router.get('/add', storeController.addStore);
-router.get('/tags', catchErrors(storeController.getStoresByTag));
-router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
+router.get('/tags', catchErrors(storeController.getStoreByTag));
+router.get('/tags/:tag', catchErrors(storeController.getStoreByTag));
 
 router.post('/add',
   storeController.upload,
