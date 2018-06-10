@@ -33,7 +33,7 @@ exports.validateRegister = (req, res, next) => { // Validation middleware
 }
 
 exports.register = async (req, res, next) => {
-  const user = new User({ email: req.body.email, username: req.body.name });
+  const user = new User({ email: req.body.email, name: req.body.name });
   const register = promisify(User.register, User);
   await register(user, req.body.password); // This is already hashed because user model has local-passport plugin activated
   next(); // Pass off to auth controller
