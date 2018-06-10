@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const promisify = require('es6-promisify');
 
 exports.loginForm = (req, res) => {
   res.render('login', {title: 'Login'});
@@ -28,4 +30,11 @@ exports.validateRegister = (req, res, next) => { // Validation middleware
     return; // Stop function from running
   }
   next(); // No errors!
+}
+
+exports.register = async (req, res, next) => {
+  const user = new User({ email: req.body.email, username: req.body.name });
+  const register = promisify(User.register, User);
+  await register(user, req.body.password); // This is already hashed because user model has local-passport plugin activated
+  next(); // Pass off to auth controller
 }
