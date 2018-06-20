@@ -45,7 +45,7 @@ exports.account = (req, res) => {
 
 exports.updateAccount = async (req, res) => {
   const updates = {
-    name: req.body.name
+    name: req.body.name,
     email: req.body.email
   };
   const user = await User.findOneAndUpdate(
