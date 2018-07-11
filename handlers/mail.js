@@ -13,7 +13,7 @@ const transport = nodeMailer.createTransport({
   }
 });
 
-const generateHTML = (file, options = {}) => {
+const generateHTML = (filename, options = {}) => {
   const html = pug.renderFile(`${__dirname}/../views/email/${filename}.pug`, options);
   const inlined = juice(html); // Using juice to inline styles, to make mail compatible with all(most) viewers
   return inlined;
