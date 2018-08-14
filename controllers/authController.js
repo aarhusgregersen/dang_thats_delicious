@@ -25,7 +25,7 @@ exports.isLoggedIn = (req, res, next) => {
     return;
   }
   req.flash('error', 'Oops! You must be logged in to do that!');
-  req.redirect('/login');
+  res.redirect('/login');
 }
 
 exports.forgot = async (req, res) => {
