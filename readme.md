@@ -25,3 +25,21 @@ That will populate 16 stores with 3 authors and 41 reviews. The logins for the a
 |Beau|beau@example.com|beau|
 
 
+## Environment variables
+
+Coming back to this project after a while is troublesome, because we might forget that we're actually using a `variables.env` file in the repo, to connect to the database, among other things.
+
+Create a `variables.env` file after pulling this repo, and make sure you have the following contents in it:
+
+```
+NODE_ENV=development
+DATABASE=insert_your_mongodb_connect_string
+MAIL_USER=123
+MAIL_PASS=123
+MAIL_HOST=mailtrap.io
+MAIL_PORT=2525
+PORT=7777
+MAP_KEY=insert_google_maps_key
+SECRET=write_a_funny_secret
+KEY=write_something_funny_to_serialize_cookies
+```
